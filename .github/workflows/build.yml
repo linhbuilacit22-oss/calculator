@@ -19,14 +19,15 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
+        working-directory: calculator
         run: npm install
 
       - name: Build Electron app
-        run: npm run build
+        working-directory: calculator
+        run: npm run dist
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: calculator-build
-          path: dist/
-
+          path: calculator/dist/
